@@ -8,30 +8,80 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <style>
-    #image-container {
-      display: flex;
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-      #menu {
-      padding-left: 15px;
-    }
+      
+      body {
+        background-color: #303030;
+        font-family: monospace;
+        font-weight: 600;
+      }
+      
+      .container {
+        overflow: auto;
+        position: absolute;
+        top: 5%;
+        left: 25%;
+        background-color: #D0D0D0;
+        border: 3px solid #484848;
+      }
+      
+      .menu {
+        float: left;  
+        padding: 10px;
+        width: 200px;
+        background-color: #D0D0D0;
+      }
+      
+      .menu > h1 {
+          margin-bottom: 5px;
+      }
+      
+      .menu > ul {
+          list-style-type: none;
+      }
+      
+      .menu > ul > li {
+          padding: 3px;
+          text-transform: uppercase;
+          font-size: 15px;
+      }
+      
+      #image-container {
+          float: left;
+          background-color: #A0A0A0;
+          border-left: 1px solid #484848;
+      }
+      
+      #file {
+          margin-bottom: 8px;
+          }
   </style>
 </head>
 
 <body>
-
-  <div>
-    <input type="file" id="file" />  
-  </div>
-  <div id="image-container">
-    <canvas width="500" height="500"></canvas>
-    <div id="menu">
-      <span>Top Line:</span><br/>
-      <input id="topLineText" type="text"><br/>
-      <span>Bottom Line:</span><br/>
-      <input id="bottomLineText" type="text"><br/>
-      <button id="saveBtn">Save</button>
-    </div>
-  </div>
+    <div class="container">
+        <div class="menu">
+            <h1>STWÓRZ MEMA:</h1>
+            <ul>
+            <li><input type="file" id="file" /></li>
+            <li><label>Górna linia:</label></li>
+            <li><input id="topLineText" type="text"></li>
+            <li><label>Dolna linia:</label></li>
+            <li><input id="bottomLineText" type="text"></li>
+            <li><button id="saveBtn">Zapisz</button></li>
+            </ul>
+        </div>
+  
+        <div id="image-container">
+        <canvas width="500" height="500"></canvas>
+        </div>
+        
+    </div> 
+    
   <script>
     function textChangeListener (evt) {
       var id = evt.target.id;
